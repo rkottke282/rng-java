@@ -7,13 +7,14 @@ import java.util.concurrent.locks.*;
 public class NumericalRecipe extends Random {
 
     private static final long TWO_TO_THE_ONE_NINETY_TWO = 2^192; 
-    public static final int ONE_BILLION = 1000000000;
+    private int count;
     private Lock l = new ReentrantLock();
     private long u;
     private long v = 4101842887655102017L;
     private long w = 1;
 
-    public NumericalRecipe(long seed) {
+    public NumericalRecipe(long seed, int count) {
+        this.count = count;
         l.lock();
         u = seed ^ v;
         nextLong();
@@ -24,15 +25,16 @@ public class NumericalRecipe extends Random {
         l.unlock();
     }
     
-    public void generateRandom() {
-        float[] randomNumbers = new float[ONE_BILLION];
+    public float[] generateRandom() {
+        float[] randomNumbers = new float[count];
         long startTime = System.nanoTime();
-        for (int i = 0; i < ONE_BILLION; i++) {
+        for (int i = 0; i < count; i++) {
             randomNumbers[i] = next(0);
         }
         long endTime = System.nanoTime();
         long milliseconds = (endTime - startTime)/1000000;
-        System.out.println("XOR created 1,000,000,000 Random Numbers in " + milliseconds + " milliseconds");
+        System.out.println("Numerical Recipe created "+ count +" Random Numbers in " + milliseconds + " milliseconds");
+        return randomNumbers;
     }
   
     protected float next(float bits) {

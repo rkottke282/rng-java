@@ -1,0 +1,2 @@
+# To run
+RandomNumberGenerator has a main method.  Run the RandomNumberGenerator class to call each of the three number generators.  Time to run is displayed in console out and a file is created (.txt) with the random numbers for analysis.

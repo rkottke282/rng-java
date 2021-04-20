@@ -2,22 +2,23 @@ package main.generators;
 
 public class XORRandom {
     public static final long TWO_TO_THE_SIXTY_FOUR = 2^64;
-    public static final int ONE_BILLION = 1000000000;
+    private int count;
 
-    public XORRandom() {
-
+    public XORRandom(int count) {
+        this.count = count;
     }
     
-    public void generateRandom() {
-        float[] randomNumbers = new float[ONE_BILLION];
+    public float[] generateRandom() {
+        float[] randomNumbers = new float[count];
         randomNumbers[0] = 282;
         long startTime = System.nanoTime();
-        for (int i = 1; i < ONE_BILLION; i++) {
+        for (int i = 1; i < count; i++) {
             randomNumbers[i] = generateXOR(randomNumbers[i-1]);
         }
         long endTime = System.nanoTime();
         long milliseconds = (endTime - startTime)/1000000;
-        System.out.println("XOR created 1,000,000,000 Random Numbers in " + milliseconds + " milliseconds");
+        System.out.println("XOR created " + count + " Random Numbers in " + milliseconds + " milliseconds");
+        return randomNumbers;
     }
 
     private static float generateXOR(float seed) {
