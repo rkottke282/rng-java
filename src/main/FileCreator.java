@@ -20,7 +20,7 @@ public class FileCreator {
             FileWriter fileWriter = new FileWriter(filename + ".txt");
             for (float randomNumber: randomNumbers) {
                 fileWriter.write(String.valueOf(randomNumber));
-                fileWriter.write(",\n");
+                fileWriter.write("\n");
             }
             fileWriter.close();
             System.out.println(filename + ".txt has been written.");
