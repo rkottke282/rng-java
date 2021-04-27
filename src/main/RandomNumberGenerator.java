@@ -5,7 +5,7 @@ import main.generators.*;
 class RandomNumberGenerator {
 
     private static final long seed = 282;
-    private static final int ONE_HUNDRED_MILLION = 100;
+    private static final int ONE_HUNDRED_MILLION = 1000;
     
     public static void main(String[] args) {
         FileCreator fileCreator1 = new FileCreator("baserandom");
